@@ -38,6 +38,28 @@ The dataset used for this project is sourced from **Kaggle** and contains **284,
 4. Performance optimization and hyperparameter tuning
 5. Model deployment
 
+## Data Cleaning
+
+To ensure data quality and improve model performance, the following data cleaning steps were performed:
+
+### 1. Handling Duplicate Rows
+- Identified **1,081 duplicate rows** in the dataset.
+- Removed all duplicate rows to prevent data leakage and model bias.
+
+### 2. Checking for Missing Values
+- No missing values were found in the dataset, so no imputation was needed.
+
+### 3. Feature Scaling
+- The `Amount` feature was normalized using **StandardScaler** to ensure consistent scaling across features.
+- The `Time` column was left as is since it represents transaction timing in seconds.
+
+### 4. Class Imbalance Handling
+- The dataset is highly imbalanced, with fraudulent transactions being significantly fewer than legitimate ones.
+- Implemented **SMOTE (Synthetic Minority Over-sampling Technique)** to balance the classes.
+
+
+
+
 ## 📂 Project Structure
 ```
 ├── data/               # Dataset and preprocessed data
