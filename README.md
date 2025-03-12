@@ -81,10 +81,3 @@ python src/api.py
 
 ## 🤝 Contributing
 Feel free to open issues or submit pull requests for improvements.
-
-## 📜 License
-This project is licensed under the MIT License.
-
----
-🔗 **Author:** [Your Name](https://github.com/your-username)  
-📬 **Contact:** your.email@example.com
