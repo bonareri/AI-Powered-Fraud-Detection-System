@@ -16,7 +16,7 @@ The dataset used for this project is sourced from **Kaggle** and contains **284,
 - **Features**: 30 numerical features + target variable
 - **Target Variable**: Binary (0 = non-fraud, 1 = fraud)
 
-## 🚀 Features
+## Features
 - **Machine Learning Models:** Logistic Regression, Random Forest, XGBoost, Isolation Forest, Autoencoders.
 - **Anomaly Detection:** Identifies fraudulent patterns in financial data.
 - **Real-Time Predictions:** API-based fraud detection system.
@@ -24,13 +24,13 @@ The dataset used for this project is sourced from **Kaggle** and contains **284,
 - **Automated Alerts:** Email/SMS notifications for flagged transactions.
 - **Cloud Deployment:** Scalable integration with AWS, GCP, or Azure.
 
-## 🛠️ Technologies Used
-- **Programming:** Python
-- **Machine Learning Frameworks:** TensorFlow, Scikit-learn
-- **Data Processing:** Pandas, NumPy, SQL
-- **Visualization:** Matplotlib, Seaborn, Tableau, Power BI
-- **Deployment:** Flask, FastAPI, AWS Lambda, GCP, Azure Functions
-
+## Technologies Used
+- Python
+- Pandas & NumPy for data manipulation
+- Scikit-learn for machine learning models
+- Matplotlib & Seaborn for data visualization
+- TensorFlow for deep learning models
+  
 ## Project Workflow
 1. Data preprocessing and exploratory data analysis (EDA)
 2. Feature engineering and selection
