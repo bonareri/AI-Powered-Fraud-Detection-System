@@ -105,6 +105,31 @@ To ensure data quality and improve model performance, the following data cleanin
 
 ---
 
+### Fraud vs. Non-Fraud Distribution
+
+![image](https://github.com/user-attachments/assets/367d5949-c3a9-41a6-845b-0e79ccc5218c)
+
+#### **Class Imbalance Insights**
+- The dataset is highly imbalanced, with **284,315 non-fraudulent transactions** and only **492 fraudulent transactions**.
+- Fraudulent transactions make up **only 0.17%** of the total dataset, making fraud detection a challenging task.
+- The extreme imbalance can lead to biased models that favor the majority class (non-fraudulent transactions).
+- Standard machine learning models may **fail to detect fraud** effectively due to this imbalance.
+- To address this, techniques like **oversampling the minority class (SMOTE), undersampling the majority class, or using weighted loss functions** may be required to improve model performance.
+
+### Transaction Amount Distribution
+
+| Image 1 | Image 2 |
+|---------|---------|
+| ![Image 1](https://github.com/user-attachments/assets/1c90515d-2ed0-4f1b-87be-2b0d501bb40b) | ![Image 2](https://github.com/user-attachments/assets/b727ea11-bb87-4d2f-a749-bfe728ed1d1f) |
+
+#### Skewness in Transaction Amount
+
+- The majority of transactions are concentrated at lower amounts, while a few transactions have extremely high values.
+- A significant number of outliers exist, suggesting rare but high-value transactions. These could indicate anomalies or potential fraudulent activities.
+- The distribution appears to be **highly skewed**, meaning that most transactions are of smaller amounts with a long tail of larger transactions.
+
+
+
 
 
 
