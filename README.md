@@ -194,6 +194,67 @@ To ensure data quality and improve model performance, the following data cleanin
 - **75% of fraudulent transactions** are below **105.89**, while for non-fraudulent transactions, **75% are below 77.05**.  
 - This indicates that **most fraud occurs in relatively small amounts**, likely an attempt to bypass security measures.  
 
+### Analyzing Transaction Time Patterns
+
+- The Time column in the dataset represents the number of seconds elapsed since the first transaction.
+- I had to convert this into hours of the day.
+- Filter High-Value Fraud Transactions
+
+#### Analyzing Fraud Distribution by Hour
+
+![image](https://github.com/user-attachments/assets/0ed31029-6f53-43e9-939f-7763a2a73933)
+
+### Insights from the Distribution of High-Value Fraud Transactions by Hour  
+
+#### 1. Fraud Peaks at 11 AM  
+- A **sharp spike** in fraudulent transactions occurs around **11 AM**, suggesting fraudsters may be exploiting increased transaction activity during business hours.  
+
+#### 2. Fraud is Spread Throughout the Day, with Some Night Activity  
+- Fraudulent transactions are **not limited to business hours**; there is a **noticeable presence between midnight and 4 AM**.  
+- Late-night fraud may indicate attempts to exploit reduced security monitoring during off-hours.  
+
+#### 3. Another Spike Around Late Evening (10-11 PM)  
+- There is a secondary **increase in fraud cases around 10-11 PM**, possibly targeting times when users are less likely to notice suspicious transactions.  
+
+#### 4. Low Activity Between 6 AM - 9 AM  
+- **Significantly lower fraud activity** is observed in the early morning hours, possibly because fewer transactions happen at this time, making fraudulent attempts more detectable.
+
+### Comparing Fraudulent vs. Legitimate Transactions
+
+![image](https://github.com/user-attachments/assets/3080d77b-4cc3-4777-91fa-c1b8194443fc)
+
+#### **Insights from Hourly Distribution of High-Value Transactions**  
+
+#### **Non-Fraudulent Transactions**  
+- The distribution follows a **typical business cycle**, with **peaks between 9 AM - 1 PM** and a gradual decline afterward.  
+- The highest number of transactions occurs at **11 AM**, suggesting that legitimate transactions are most frequent during normal working hours.  
+- A **secondary peak** appears in the evening (around **6 PM - 8 PM**), possibly due to after-work financial activities.  
+- Minimal transactions occur **between 2 AM - 6 AM**, aligning with expected human behavior (low activity at night).  
+
+#### **Fraudulent Transactions (Compared to Non-Fraudulent Ones)**  
+- Fraudulent transactions **do not strictly follow business hours**; instead, they are **more scattered across the day**.  
+- **A distinct spike at 11 AM** is visible in both fraud and non-fraud cases, meaning fraudsters may be **blending their activity into peak transaction times** to avoid detection.  
+- Unlike non-fraudulent transactions, fraud cases show **higher activity late at night (past 10 PM - 2 AM)**, possibly exploiting reduced monitoring.  
+- Fraud transactions are **less concentrated in the evening peak (6 PM - 8 PM)** compared to non-fraudulent ones.  
+
+### **Recommendations**  
+**Fraud Detection Improvement**:  
+- Security teams should **pay close attention to transactions occurring late at night**, as fraudulent activity remains **elevated beyond normal business hours**.   
+
+**Transaction Monitoring Adjustments**:  
+- While **11 AM peaks for both fraud and non-fraud cases**, fraudsters likely exploit this **to hide within legitimate transaction volumes**.  
+- Special attention should be given to high-value transactions **outside of regular business peaks**, particularly those occurring in the **late-night hours**.  
+
+
+**NB** : Scaling Effects in Visualization
+
+- Since the fraudulent transactions range in the tens (e.g., 10-20 per hour), the y-axis scale for the fraud plot remains small.
+- Conversely, non-fraudulent transactions are in the thousands per hour, causing a much higher y-axis range.
+
+ 
+
+
+
 
 
 
