@@ -118,8 +118,8 @@ To ensure data quality and improve model performance, the following data cleanin
 
 ### Transaction Amount Distribution
 
-| Image 1 | Image 2 |
-|---------|---------|
+| Distribution of Transaction Amount | Outlier Detection |
+|------------------------------------|-------------------|
 | ![Image 1](https://github.com/user-attachments/assets/1c90515d-2ed0-4f1b-87be-2b0d501bb40b) | ![Image 2](https://github.com/user-attachments/assets/b727ea11-bb87-4d2f-a749-bfe728ed1d1f) |
 
 #### Skewness in Transaction Amount
@@ -127,6 +127,62 @@ To ensure data quality and improve model performance, the following data cleanin
 - The majority of transactions are concentrated at lower amounts, while a few transactions have extremely high values.
 - A significant number of outliers exist, suggesting rare but high-value transactions. These could indicate anomalies or potential fraudulent activities.
 - The distribution appears to be **highly skewed**, meaning that most transactions are of smaller amounts with a long tail of larger transactions.
+
+### Identifying Outliers
+
+- **Fraudulent outliers:** 91  
+- **Non-fraudulent outliers:** 31,813  
+
+### Comparing the Transaction Amounts of Fraud vs. Non-Fraud Transactions  
+
+#### Fraudulent Transactions Summary  
+
+| Statistic | Value |
+|-----------|--------------|
+| **Count** | 492.000000 |
+| **Mean** | 122.211321 |
+| **Standard Deviation (std)** | 256.683288 |
+| **Minimum (min)** | 0.000000 |
+| **25th Percentile (Q1)** | 1.000000 |
+| **Median (50%)** | 9.250000 |
+| **75th Percentile (Q3)** | 105.890000 |
+| **Maximum (max)** | 2125.870000 |
+
+#### Non-Fraudulent Transactions Summary  
+
+| Statistic | Value |
+|-----------|--------------|
+| **Count** | 284315.000000 |
+| **Mean** | 88.291022 |
+| **Standard Deviation (std)** | 250.105092 |
+| **Minimum (min)** | 0.000000 |
+| **25th Percentile (Q1)** | 5.650000 |
+| **Median (50%)** | 22.000000 |
+| **75th Percentile (Q3)** | 77.050000 |
+| **Maximum (max)** | 25691.160000 |
+
+### Insights from the Transaction Amount Analysis  
+
+#### Fraudulent Transactions Tend to Have Higher Median Amounts  
+- The **median** transaction amount for fraudulent transactions is **9.25**, whereas for non-fraudulent transactions, it's **22.00**.  
+- This suggests that fraudsters often process **lower amounts** on average to avoid detection.  
+
+#### Fraudulent Transactions Have a Much Lower Maximum Value  
+- The **highest** fraudulent transaction amount is **2,125.87**, while for non-fraudulent transactions, it's **25,691.16**.  
+- This implies that **extreme high-value transactions are usually legitimate** rather than fraudulent.  
+
+#### Fraudulent Transactions Have a Higher Standard Deviation Relative to Their Mean  
+- **Std for fraud:** 256.68, **Std for non-fraud:** 250.10  
+- Even though both groups have similar standard deviations, fraudulent transactions have a **higher variance relative to their mean** (122.21 for fraud vs. 88.29 for non-fraud).  
+- This suggests that fraud transactions are **more dispersed**, making them harder to detect using simple threshold-based methods.  
+
+#### Fraudulent Transactions Are More Concentrated in the Lower Ranges  
+- **75% of fraudulent transactions** are below **105.89**, while for non-fraudulent transactions, **75% are below 77.05**.  
+- This indicates that **most fraud occurs in relatively small amounts**, likely an attempt to bypass security measures.  
+
+
+
+
 
 
 
