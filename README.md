@@ -32,11 +32,13 @@ The dataset used for this project is sourced from **Kaggle** and contains **284,
 - TensorFlow for deep learning models
   
 ## Project Workflow
-1. Data preprocessing and exploratory data analysis (EDA)
-2. Feature engineering and selection
-3. Model training and evaluation (ML & deep learning approaches)
-4. Performance optimization and hyperparameter tuning
-5. Model deployment
+1. Data Cleaning
+2. Exploratory data analysis (EDA)
+3. Data preprocessing
+4. Feature engineering and selection
+5. Model training and evaluation (ML & deep learning approaches)
+6. Performance optimization and hyperparameter tuning
+7. Model deployment
 
 ## Data Cleaning
 
@@ -56,6 +58,52 @@ To ensure data quality and improve model performance, the following data cleanin
 ### 4. Class Imbalance Handling
 - The dataset is highly imbalanced, with fraudulent transactions being significantly fewer than legitimate ones.
 - Implemented **SMOTE (Synthetic Minority Over-sampling Technique)** to balance the classes.
+
+## Exploratory data analysis (EDA)
+
+### Summary Statistics
+
+| Statistic | Time    | V1       | V2       | V3       | V4       | V5       | V6       | V7       | V8       | V9       | ... | V21      | V22      | V23      | V24      | V25      | V26      | V27      | V28      | Amount   | Class   |
+|-----------|--------|----------|----------|----------|----------|----------|----------|----------|----------|----------|-----|----------|----------|----------|----------|----------|----------|----------|----------|----------|---------|
+| count     | 284807 | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | ... | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807   | 284807  |
+| mean      | 94813.86 | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | ... | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 0.00     | 88.35    | 0.0017  |
+| std       | 47488.14 | 1.96     | 1.65     | 1.52     | 1.41     | 1.38     | 1.33     | 1.24     | 1.19     | 1.10     | ... | 0.73     | 0.72     | 0.62     | 0.61     | 0.52     | 0.48     | 0.40     | 0.33     | 250.12   | 0.04    |
+| min       | 0.00   | -56.41   | -72.72   | -48.33   | -5.68    | -113.74  | -26.16   | -43.56   | -73.22   | -13.43   | ... | -34.83   | -10.93   | -44.81   | -2.84    | -10.30   | -2.60    | -22.57   | -15.43   | 0.00     | 0.00    |
+| 25%       | 54201.5 | -0.92    | -0.60    | -0.89    | -0.85    | -0.69    | -0.77    | -0.55    | -0.21    | -0.64    | ... | -0.23    | -0.54    | -0.16    | -0.35    | -0.32    | -0.33    | -0.07    | -0.05    | 5.60     | 0.00    |
+| 50%       | 84692.0 | 0.02     | 0.07     | 0.18     | -0.02    | -0.05    | -0.27    | 0.04     | 0.02     | -0.05    | ... | -0.03    | 0.01     | -0.01    | 0.04     | 0.02     | -0.05    | 0.00     | 0.01     | 22.00    | 0.00    |
+| 75%       | 139320.5 | 1.32     | 0.80     | 1.03     | 0.74     | 0.61     | 0.40     | 0.57     | 0.33     | 0.60     | ... | 0.19     | 0.53     | 0.15     | 0.44     | 0.35     | 0.24     | 0.09     | 0.08     | 77.16    | 0.00    |
+| max       | 172792.0 | 2.45     | 22.06    | 9.38     | 16.88    | 34.80    | 73.30    | 120.59   | 20.01    | 15.59    | ... | 27.20    | 10.50    | 22.53    | 4.58     | 7.52     | 3.52     | 31.61    | 33.85    | 25691.16 | 1.00    |
+
+---
+
+### Key Insights
+
+#### 1. Dataset Overview
+- The dataset consists of **284,807 transactions**, with a highly imbalanced distribution of fraud cases (`Class = 1`).
+- The **mean transaction amount** is **$88.35**, but there is a wide range, with the **maximum transaction** reaching **$25,691.16**.
+
+#### 2. Fraud Class Distribution
+- The fraud cases account for **only 0.17% of the total transactions**, making fraud detection a highly imbalanced classification problem.
+- The data preprocessing should include **techniques like oversampling (SMOTE) or undersampling** to balance the dataset.
+
+#### 3. Correlation Analysis
+- Highly correlated features with fraud include **V11 (0.1549), V4 (0.1334), and V2 (0.0913)**.
+- Some features are **strongly negatively correlated** with fraud, particularly **V17 (-0.3265), V14 (-0.3025), and V12 (-0.2606)**.
+- Feature engineering should focus on **these top correlated features** for model training.
+
+#### 4. Feature Distributions
+- Most of the **V1-V28 features** are statistically centered around **0**, indicating that they are already standardized (likely from PCA transformation).
+- The **distribution of transaction time** suggests that **fraud cases are not uniformly distributed across the day**. Further analysis can be done using **hourly fraud trends**.
+
+#### 5. Skewness in Transaction Amount
+- The **distribution of `Amount` is highly skewed**, with most transactions being of small amounts, but fraud transactions often involve **larger sums**.
+- Applying **log transformation** may help stabilize variance and improve model performance.
+
+#### 6. Outliers and Anomalies
+- Features **V10, V12, and V14 show extreme values**, which might be **useful indicators for fraud detection**.
+- Outlier removal or robust modeling techniques may improve fraud prediction accuracy.
+
+---
 
 
 
