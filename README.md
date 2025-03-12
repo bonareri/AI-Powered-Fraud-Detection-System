@@ -245,23 +245,31 @@ To ensure data quality and improve model performance, the following data cleanin
 - While **11 AM peaks for both fraud and non-fraud cases**, fraudsters likely exploit this **to hide within legitimate transaction volumes**.  
 - Special attention should be given to high-value transactions **outside of regular business peaks**, particularly those occurring in the **late-night hours**.  
 
-
 **NB** : Scaling Effects in Visualization
 
 - Since the fraudulent transactions range in the tens (e.g., 10-20 per hour), the y-axis scale for the fraud plot remains small.
 - Conversely, non-fraudulent transactions are in the thousands per hour, causing a much higher y-axis range.
 
- 
+### Correlation Analysis
 
+![image](https://github.com/user-attachments/assets/ffd8957d-d610-4038-bb35-c329be764c2b)
 
+#### Feature Correlation Heatmap - Insights
 
+- The Class column (fraud indicator) shows some correlation with certain features.
+- Some variables (e.g.V2, V4 and V11) appear to have higher absolute correlations with fraud.
+- The majority of features have low correlations with each other, except for a few which show mild dependencies.
+- Time and Amount have very little correlation with fraud.
 
+### Highly correlated features for fraud detection.
 
+![image](https://github.com/user-attachments/assets/079b6858-29f2-4750-be66-af36e1001e1e)
 
-
-
-
-
+#### **Key Insights**
+- **V11, V4, and V2** show the strongest positive correlation, suggesting that their increase may be associated with fraudulent activity.  
+- **V17, V14, and V12** are highly negatively correlated, meaning lower values in these features might indicate fraud.  
+- The **Amount** feature has a very low correlation (**0.0056**), meaning transaction value alone is not a strong fraud indicator.  
+- The **Hour** of the transaction has a weak negative correlation (**-0.0171**), meaning time of day alone does not significantly predict fraud.
 
 
 ## 📂 Project Structure
