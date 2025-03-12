@@ -35,10 +35,9 @@ The dataset used for this project is sourced from **Kaggle** and contains **284,
 1. Data Cleaning
 2. Exploratory data analysis (EDA)
 3. Data preprocessing
-4. Feature engineering and selection
-5. Model training and evaluation (ML & deep learning approaches)
-6. Performance optimization and hyperparameter tuning
-7. Model deployment
+4. Model training and evaluation (ML & deep learning approaches)
+5. Performance optimization and hyperparameter tuning
+6. Model deployment
 
 ## Data Cleaning
 
@@ -271,30 +270,81 @@ To ensure data quality and improve model performance, the following data cleanin
 - The **Amount** feature has a very low correlation (**0.0056**), meaning transaction value alone is not a strong fraud indicator.  
 - The **Hour** of the transaction has a weak negative correlation (**-0.0171**), meaning time of day alone does not significantly predict fraud.
 
+## Data Preprocessing
 
-## 📂 Project Structure
-```
-├── data/               # Dataset and preprocessed data
-├── notebooks/          # Jupyter notebooks for analysis
-├── src/               # Source code for model training and deployment
-│   ├── preprocessing.py  # Data cleaning and feature engineering
-│   ├── train.py         # Model training script
-│   ├── predict.py       # Model inference script
-│   ├── api.py           # Flask/FastAPI application
-├── models/            # Saved machine learning models
-├── reports/           # Visualizations and analysis reports
-├── README.md          # Project documentation
-```
+The dataset underwent several preprocessing steps to ensure optimal model performance:
 
-## 📊 Data Processing
-1. **Data Cleaning:** Handle missing values, outliers, and normalization.
-2. **Feature Engineering:** Extract meaningful features for better model performance.
-3. **Exploratory Data Analysis (EDA):** Visualize fraud trends and data distribution.
+1. **Handling Missing Values**  
+   - Checked for missing values in the dataset.  
+   - No missing values were found, so no imputation was needed.
 
-## 🤖 Model Development
-1. Train multiple ML models and evaluate using precision, recall, F1-score, and AUC-ROC.
-2. Optimize performance using hyperparameter tuning.
-3. Select the best-performing model for deployment.
+2. **Handling Class Imbalance**  
+   - The dataset was highly imbalanced, with a significantly lower number of fraudulent transactions.  
+   - Applied **SMOTE (Synthetic Minority Over-sampling Technique)** to balance the class distribution.  
+   - After SMOTE, the dataset contained an equal number of fraud and non-fraud samples.
+
+3. **Feature Scaling**  
+   - Since the data was highly skewed, **RobustScaler** was used to normalize features instead of StandardScaler.  
+   - RobustScaler is more robust to outliers and scales features based on the interquartile range (IQR), making it suitable for skewed data.  
+
+4. **Feature Selection**  
+   - Used **Random Forest Feature Importance** to select the top 20 most relevant features.  
+   - The selected features were retained for model training, reducing dimensionality and improving efficiency.
+
+5. **Data Splitting**  
+   - The dataset was split into **80% training** and **20% testing** sets.  
+   - Ensured stratified sampling to maintain class distribution in both sets.
+
+6. **Cross-Validation**  
+   - Applied **K-Fold Cross-Validation (5 folds)** to evaluate model performance consistently.  
+   - This helped in detecting potential overfitting and improving generalization.
+
+These preprocessing steps ensured a well-prepared dataset for training the machine learning models.
+
+## Model Development and Evaluation
+
+After data preprocessing, multiple machine learning models were trained and evaluated to detect fraudulent transactions. The following models were implemented:
+
+### 1. Logistic Regression
+- A baseline model to assess performance on the dataset.
+- Evaluated using **accuracy, precision, recall, F1-score**, and **AUC-ROC**.
+- Confusion matrix and AUC-ROC curve were plotted for visualization.
+
+![image](https://github.com/user-attachments/assets/dfcc9fe1-008f-4086-86e8-00b29e773dd8)
+
+---
+
+### 2. Random Forest Classifier
+- An ensemble learning method using multiple decision trees.
+- Tuned hyperparameters such as `n_estimators`, `max_depth`, and `min_samples_split`.
+- Evaluated using the same metrics as Logistic Regression.
+
+![image](https://github.com/user-attachments/assets/78c45281-ae78-451d-a184-3d4968c5c8d8)
+
+---
+
+### 3. XGBoost Classifier
+- A powerful gradient boosting algorithm that optimizes performance.
+- Tuned hyperparameters including `learning_rate`, `max_depth`, and `n_estimators`.
+- Achieved the best performance among all models.
+
+![image](https://github.com/user-attachments/assets/45f38889-df06-4393-8764-7607de608a8a)
+
+---
+
+### 📊 Model Comparison
+| Model               | Accuracy | Precision | Recall | F1-score | AUC-ROC |
+|---------------------|----------|-----------|--------|----------|---------|
+| Logistic Regression | 0.9796   | 0.9917    | 0.9673 | 0.9793   | 0.9970  |
+| Random Forest      | 0.9917   | 0.9984    | 0.9851 | 0.9917   | 0.9996   |
+| XGBoost           | 0.9987   | 0.9980    | 0.9994 | 0.9987   | 0.9999   |
+
+> **Observations:**  
+> - XGBoost achieved the highest accuracy and recall, making it the best model for fraud detection.  
+> - Logistic Regression served as a strong baseline model.  
+> - Random Forest performed well but slightly underperformed compared to XGBoost.
+
+---
 
 ## 🚀 Deployment & Automation
 1. Deploy the model as an API using Flask or FastAPI.
@@ -305,28 +355,6 @@ To ensure data quality and improve model performance, the following data cleanin
 - Develop an interactive dashboard in Tableau/Power BI.
 - Track fraud trends and model performance in real time.
 - Set up automated alerts for flagged transactions.
-
-## 🔧 Installation
-```bash
-# Clone the repository
-git clone https://github.com/your-username/fraud-detection.git
-cd fraud-detection
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the API
-python src/api.py
-```
-
-## 📝 Usage
-- Train the model: `python src/train.py`
-- Make predictions: `python src/predict.py`
-- Start API: `python src/api.py`
 
 ## 🎯 Future Enhancements
 - Integrate deep learning techniques for improved fraud detection.
