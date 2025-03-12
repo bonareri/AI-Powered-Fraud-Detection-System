@@ -1,7 +1,20 @@
 # Fraud Detection System
 
-## 📌 Overview
+## Overview
 This project is an AI-driven fraud detection system that identifies suspicious transactions using machine learning and anomaly detection techniques. It leverages supervised and unsupervised learning models to enhance security and prevent fraudulent activities in financial transactions.
+
+## Dataset
+The dataset used for this project is sourced from **Kaggle** and contains **284,807** transactions with the following attributes:
+
+- **Time**: Seconds elapsed between the transaction and the first transaction in the dataset.
+- **V1 to V28**: Features obtained from PCA transformation (principal component analysis).
+- **Amount**: The transaction amount.
+- **Class**: The target variable (0 = legitimate transaction, 1 = fraudulent transaction).
+
+### Dataset Summary
+- **Total Entries**: 284,807
+- **Features**: 30 numerical features + target variable
+- **Target Variable**: Binary (0 = non-fraud, 1 = fraud)
 
 ## 🚀 Features
 - **Machine Learning Models:** Logistic Regression, Random Forest, XGBoost, Isolation Forest, Autoencoders.
@@ -17,6 +30,13 @@ This project is an AI-driven fraud detection system that identifies suspicious t
 - **Data Processing:** Pandas, NumPy, SQL
 - **Visualization:** Matplotlib, Seaborn, Tableau, Power BI
 - **Deployment:** Flask, FastAPI, AWS Lambda, GCP, Azure Functions
+
+## Project Workflow
+1. Data preprocessing and exploratory data analysis (EDA)
+2. Feature engineering and selection
+3. Model training and evaluation (ML & deep learning approaches)
+4. Performance optimization and hyperparameter tuning
+5. Model deployment
 
 ## 📂 Project Structure
 ```
