@@ -137,11 +137,13 @@ To ensure data quality and improve model performance, the following data cleanin
 
 #### Fraudulent vs. Non-Fraudulent Transactions Summary  
 
-<div style="display: flex; justify-content: space-between;">
-
-<div style="width: 48%;">
-
-### Fraudulent Transactions Summary  
+<table>
+<tr>
+    <th>Fraudulent Transactions Summary</th>
+    <th>Non-Fraudulent Transactions Summary</th>
+</tr>
+<tr>
+    <td>
 
 | Statistic | Value |
 |-----------|--------------|
@@ -154,11 +156,8 @@ To ensure data quality and improve model performance, the following data cleanin
 | **75th Percentile (Q3)** | 105.890000 |
 | **Maximum (max)** | 2125.870000 |
 
-</div>
-
-<div style="width: 48%;">
-
-### Non-Fraudulent Transactions Summary  
+</td>
+    <td>
 
 | Statistic | Value |
 |-----------|--------------|
@@ -171,9 +170,9 @@ To ensure data quality and improve model performance, the following data cleanin
 | **75th Percentile (Q3)** | 77.050000 |
 | **Maximum (max)** | 25691.160000 |
 
-</div>
-
-</div>
+</td>
+</tr>
+</table>
 
 
 ### Insights from the Transaction Amount Analysis  
